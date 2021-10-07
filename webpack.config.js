@@ -31,7 +31,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-                additionalData: '@use "sass:color"; @import "~/scss/_variables";'
+                additionalData: '@import "~/scss/_variables";'
             }
         }
       ]

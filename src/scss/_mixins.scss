@@ -1,0 +1,14 @@
+@mixin media-items {
+  @media (max-width: $breakpoint-web-small) {
+    width: calc(25% - ($margin-item * 2));
+  }
+  @media (max-width: $breakpoint-mobile-pad) {
+    width: calc(33.3% - ($margin-item * 2));
+  }
+  @media (max-width: $breakpoint-mobile-medium) {
+    width: calc(50% - ($margin-item * 2));
+  }
+  @media (max-width: $breakpoint-mobile-small) {
+    width: calc(100% - ($margin-item * 2));
+  }
+}

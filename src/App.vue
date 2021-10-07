@@ -35,7 +35,7 @@ export default {
 <style lang="scss" scoped>
 .app__inner {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   font-family: $font-main;
@@ -67,11 +67,11 @@ export default {
     margin: 50px;
     flex-grow: 1;
     .main__inner {
-      background-color: whitesmoke;
       width: 100%;
       height: 100%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
     }
   }
   footer {
