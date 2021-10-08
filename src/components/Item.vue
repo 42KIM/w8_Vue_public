@@ -27,6 +27,12 @@ export default {
     resizedPoster() {
       return this.movie.Poster !== 'N/A' ? this.movie.Poster.split('SX300.jpg').join('SX700.jpg') : 'https://via.placeholder.com/400x500.png?text=No+Image+Found';
     }
+  },
+  methods: {
+    showDetails(id) {
+      console.log('클릭', id);
+      this.$store.dispatch('searchMovie/getDetails', id);
+    },
   }
 };
 </script>

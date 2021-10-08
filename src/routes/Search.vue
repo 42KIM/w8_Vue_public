@@ -41,10 +41,6 @@ export default {
     this.bindScrollEvent();
   },
   methods: {
-    showDetails(id) {
-      console.log('클릭', id);
-      this.$store.dispatch('searchMovie/getDetails', id);
-    },
     bindScrollEvent() {
       const footer = document.querySelector('footer');
       const observer = new IntersectionObserver(entries => {
