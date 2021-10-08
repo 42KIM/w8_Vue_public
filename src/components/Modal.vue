@@ -11,14 +11,14 @@
           <img :src="`${details.Poster}`" />
         </div>
         <div class="modal__info">
-          <span class="info__title">{{ details.Title }}</span>
-          <span class="info__rated">{{ details.Rated }}</span>
-          <span class="info__released">{{ details.Released }}</span>
-          <span class="info__runtime">{{ details.Runtime }}</span>
-          <span class="info__genre">{{ details.Genre }}</span>
-          <span class="info__director">{{ details.Director }}</span>
-          <span class="info__writer">{{ details.Writer }}</span>
-          <span class="info__actors">{{ details.Actors }}</span>
+          <span class="info__title">🎬{{ details.Title }}</span>
+          <span class="info__rated">Rated: {{ details.Rated }}</span>
+          <span class="info__released">Released: {{ details.Released }}</span>
+          <span class="info__runtime">Runtime: {{ details.Runtime }}</span>
+          <span class="info__genre">Genre: {{ details.Genre }}</span>
+          <span class="info__director">Director: {{ details.Director }}</span>
+          <span class="info__writer">Writer: {{ details.Writer }}</span>
+          <span class="info__actors">Actors: {{ details.Actors }}</span>
           <span class="info__plot">{{ details.Plot }}</span>
         </div>
       </div>
@@ -59,9 +59,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.7);
   .main__modal {
     position: fixed;
-    background-color: hotpink;
+    background-color: $color-main-theme;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, .5);
     width: 50%;
-    height: 60vh;
+    height: 50%;
     margin: auto;
     top: 0;
     left: 0;
@@ -70,14 +72,48 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
     .modal__image {
-      height: 80%;
+      width: 50%;
     }
     .modal__info {
-      border: 1px solid;
       width: 50%;
+      height: 100%;
       display: flex;
+      padding: 20px;
       flex-direction: column;
+      justify-content: space-between;
+      .info__title {
+        font-size: 20px;
+      }
+      .info__writer {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .info__actors {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .info__plot {
+        max-height: 30%;
+        text-align: start;
+        text-overflow: ellipsis;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: $color-main-theme--dark;
+          border-radius: 5px;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: $color-main-theme--light;
+          border-radius: 5px;
+        }
+      }
     }
   }
 }

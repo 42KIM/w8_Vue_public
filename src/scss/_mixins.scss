@@ -12,3 +12,9 @@
     width: calc(100% - ($margin-item * 2));
   }
 }
+
+@mixin media-logo {
+  @media (max-width: $breakpoint-mobile-medium) {
+    display: none;
+  }
+}

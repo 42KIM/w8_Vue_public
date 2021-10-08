@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/scss/_mixins.scss';
+
 .app__inner {
   position: relative;
   min-height: 100vh;
@@ -41,7 +43,7 @@ export default {
   font-family: $font-main;
   header {
     box-sizing: border-box;
-    background-color: $color-main-theme;
+    background-color: $color-main-theme--header;
     position: sticky;
     top: 0;
     z-index: 9998;
@@ -51,8 +53,13 @@ export default {
     padding: 0 50px;
     flex-shrink: 0;
     .header__logo {
+      width: $width-logo;
       position: absolute;
+      font-size: 25px;
+      flex-shrink: 0;
       cursor: pointer;
+      margin-left: 10px;
+      @include media-logo;
       .logo__text {
         color: $color-main-font;
       }

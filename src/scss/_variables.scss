@@ -1,8 +1,10 @@
-$color-main-theme: rgba(243, 166, 0, 0.7);
-$color-main-theme--dark: rgba(243, 166, 0, 1);
+$color-main-theme: rgba(243, 166, 0, 1);
+$color-main-theme--header: rgba(243, 166, 0, 0.95);
+$color-main-theme--dark: rgb(141, 96, 0);
 $color-main-theme--light: rgba(243, 166, 0, 0.2);
 $color-main-font: rgba(209, 0, 0, 1);
 $color-main-font--light: rgba(209, 0, 0, 0.7);
+$color-main-font--lighter: rgba(209, 0, 0, 0.4);
 $color-font-light: rgba(0, 0, 0, 0.3);
 
 $font-main: "Anton", sans-serif;
@@ -16,3 +18,5 @@ $breakpoint-web-small: 1400px;
 $breakpoint-mobile-pad: 1000px;
 $breakpoint-mobile-medium: 750px;
 $breakpoint-mobile-small: 550px;
+
+$width-logo: 150px;

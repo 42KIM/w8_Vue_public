@@ -7,7 +7,7 @@
         v-model="inputText"
         type="text"
         class="searchBar__input"
-        placeholder="insert movie keywords.." />
+        placeholder="input movie keywords.." />
       <button
         class="searchBar__button btn btn-primary"
         type="submit">
@@ -45,25 +45,23 @@ export default {
 
 <style lang="scss">
 .header__searchBar{
-  width: 500px;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   .searchBar__form {
+    width: 40%;
     display: flex;
     .searchBar__input {
       width: 100%;
       &::placeholder {
-        color: $color-font-light;
+        color: $color-main-font--lighter;
         font-size: 14p;
         text-align: center;
       }
     }
     .searchBar__button {
-      border-color: $color-main-theme--dark;
-      background-color: $color-main-theme--dark;
+      border-color: $color-main-font--light;
+      background-color: $color-main-theme--light;
       width: 70px;
       color: $color-main-font;
     }
