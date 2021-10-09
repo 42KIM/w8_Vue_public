@@ -1,8 +1,13 @@
 <template>
-  <Item
-    v-for="movie in movies"
-    :key="movie.imdbID"
-    :movie="movie" />
+  <div
+    v-show="searching"
+    ref="wrapper"
+    class="main__items-wrapper">
+    <Item
+      v-for="movie in movies"
+      :key="movie.imdbID"
+      :movie="movie" />
+  </div>
   <Modal />
   <Spinner />
 </template>
@@ -16,9 +21,29 @@ export default {
   components: {
     Item,
     Modal,
-    Spinner
+    Spinner,
+  },
+  data() {
+    return {
+      observer: new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (this.pageNumber <= this.totalPages && !this.$store.state.searchMovie.modalOn) {
+              this.$store.dispatch('searchMovie/getMovies', this.$route.query.kw);
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      }, {
+        threshold: 1
+      }),
+      searching: false
+    };
   },
   computed: {
+    doneLoading() {
+      return !this.$store.state.searchMovie.isLoading;
+    },
     movies() {
       return this.$store.state.searchMovie.searchResults;
     },
@@ -31,31 +56,36 @@ export default {
   },
   watch: {
     $route() {
-      console.log(`${this.$route.query.kw}로 주소 바뀜!`);
       this.$store.commit('searchMovie/resetPageState');
-      this.$store.dispatch('searchMovie/getMovies', this.$route.query.kw);
+      if (this.$route.name === 'search') {
+        this.$store.dispatch('searchMovie/getMovies', this.$route.query.kw);
+      }
+    },
+    doneLoading(done) {
+      if (done) {
+        this.searching = true;
+        this.bindObserver(this.$refs.wrapper.lastElementChild.querySelector('img'));
+      } 
     }
   },
-  created() {
+  mounted() {
     this.$store.dispatch('searchMovie/getMovies', this.$route.query.kw);
-    this.bindScrollEvent();
   },
   methods: {
-    bindScrollEvent() {
-      const footer = document.querySelector('footer');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (this.pageNumber <= this.totalPages && !this.$store.state.searchMovie.modalOn) {
-              this.$store.dispatch('searchMovie/getMovies', this.$route.query.kw);
-            }
-          }
-        });
-      }, {
-        threshold: 0.5
-      });
-      observer.observe(footer);
+    bindObserver(target) {
+      target.onload = () => {
+        this.observer.observe(this.$refs.wrapper.lastElementChild);
+      };
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.main__items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 50px;
+}
+</style>

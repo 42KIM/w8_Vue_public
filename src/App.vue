@@ -34,9 +34,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '~/scss/_mixins.scss';
-
 .app__inner {
   position: relative;
+  // height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -66,16 +66,10 @@ export default {
     }
   }
   main {
-    // position: relative;
-    // height: 100%;
-    // background-color: rgba(#000, 0.2);
-    // min-height: calc(100vh - ($height-header + $height-footer));
-    height: 100%;
-    margin: 50px;
     flex-grow: 1;
     .main__inner {
       width: 100%;
-      height: 100%;
+      // height: 100%;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;

@@ -42,7 +42,6 @@ export default {
 
 .main__item {
   width: calc(20% - ($margin-item * 2));
-  max-height: 50vh;
   box-sizing: border-box;
   border-radius: 20px;
   overflow: hidden;
@@ -57,7 +56,6 @@ export default {
     transform: rotate(2deg);
   }
   .item__poster-wrapper {
-    background-color: yellowgreen;
     flex-grow: 1;
     width: 100%;
     overflow: hidden;
