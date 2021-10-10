@@ -38,7 +38,6 @@ export default {
     },
     toggleLoading(state) {
       state.isLoading = !state.isLoading;
-      console.log('isLoading', state.isLoading);
     } 
   },
   actions: {
@@ -53,7 +52,6 @@ export default {
         commit('toggleLoading');
         commit('increasePageNumber');
       } else {
-        console.log('검색 결과 없음!! noresult로 이동');
         router.push('noresult');
         commit('toggleLoading');
       }

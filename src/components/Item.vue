@@ -25,12 +25,11 @@ export default {
   },
   computed: {
     resizedPoster() {
-      return this.movie.Poster !== 'N/A' ? this.movie.Poster.split('SX300.jpg').join('SX700.jpg') : 'https://via.placeholder.com/400x500.png?text=No+Image+Found';
+      return this.movie.Poster !== 'N/A' ? this.movie.Poster.split('SX300.jpg').join('SX700.jpg') : 'https://via.placeholder.com/700x1000.png?text=No+Image+Found';
     }
   },
   methods: {
     showDetails(id) {
-      console.log('클릭', id);
       this.$store.dispatch('searchMovie/getDetails', id);
     },
   }
@@ -56,8 +55,8 @@ export default {
     transform: rotate(2deg);
   }
   .item__poster-wrapper {
-    flex-grow: 1;
     width: 100%;
+    min-height: 90%;
     overflow: hidden;
     .item__poster {
       width: 100%;

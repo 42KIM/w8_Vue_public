@@ -38,7 +38,6 @@ export default {
   },
   methods: {
     closeModal(e) {
-      console.log(e.target.className);
       const { className } = e.target;
       if (this.$store.state.searchMovie.modalOn && className !== 'main_modal') {
         this.$store.dispatch('searchMovie/toggleModal');
