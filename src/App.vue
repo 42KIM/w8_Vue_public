@@ -69,7 +69,7 @@ export default {
     flex-grow: 1;
     .main__inner {
       width: 100%;
-      // height: 100%;
+      min-height: calc(100vh - ($height-header + $height-footer));
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
@@ -80,13 +80,9 @@ export default {
     height: $height-footer;
     color: $color-main-font--light;
     text-align: center;
-    .footer__text{
-      margin: auto;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    .footer__text {
       width: 400px;
+      line-height: $height-footer;
     }
   }
 }

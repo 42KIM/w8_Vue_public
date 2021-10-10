@@ -63,8 +63,10 @@ export default {
     },
     doneLoading(done) {
       if (done) {
-        this.searching = true;
-        this.bindObserver(this.$refs.wrapper.lastElementChild.querySelector('img'));
+        if (this.$route.name === 'search' && this.movies.length) {
+          this.searching = true;
+          this.bindObserver(this.$refs.wrapper.lastElementChild.querySelector('img'));
+        }
       } 
     }
   },
