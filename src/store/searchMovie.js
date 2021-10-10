@@ -43,7 +43,7 @@ export default {
   actions: {
     async getMovies({ state, commit }, keyword) {
       commit('toggleLoading');
-      const res = await _request(keyword, state.pageNumber);
+      const res = await _request(`s=${keyword}&page=${state.pageNumber}`);
       if (res.Response === 'True') {
         await commit('setState', {
           searchResults: res.Search,
@@ -58,7 +58,7 @@ export default {
     },
     async getDetails({ commit, dispatch }, id) {
       commit('toggleLoading');
-      const detailResult = await _requestDetail(id);
+      const detailResult = await _request(`i=${id}&plot=full`);
       await commit('setState', {
         detailResult
       });
@@ -71,20 +71,12 @@ export default {
   }
 };
 
-async function _request(keyword, pageNumber) {
+async function _request(params) {
   try {
-    const res = await fetch(`https://www.omdbapi.com?apikey=7035c60c&s=${keyword}&page=${pageNumber}`);
-    if (res.ok) {
-      return res.json();
-    }
-  } catch(e) {
-    alert(e.message);
-  }
-}
-
-async function _requestDetail(id) {
-  try {
-    const res = await fetch(`https://www.omdbapi.com?apikey=7035c60c&i=${id}&plot=full`);
+    const res =  await fetch('/.netlify/functions/movies', {
+      method: 'POST',
+      body: JSON.stringify(params)
+    });
     if (res.ok) {
       return res.json();
     }
